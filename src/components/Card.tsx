@@ -15,7 +15,7 @@ interface CardProps {
 }
 
 const Card = ({name, avatar, post, likes, caption, createdAt}: CardProps) => {
-  console.log('from card component', avatar);
+  console.log('from card component', post);
   return (
     <View style={styles.container}>
       <View style={styles.profileSection}>

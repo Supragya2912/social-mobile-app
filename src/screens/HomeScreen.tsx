@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import Card from '../components/Card';
 import useGetPosts from '../hooks/useGetPosts';
+import StorySection from '../components/StorySection';
 
 const HomeScreen = () => {
   const { posts, loading, error } = useGetPosts();
@@ -44,10 +45,11 @@ const HomeScreen = () => {
         <Text style={styles.tabText}>SocialApp</Text>
       </View>
       <FlatList
-        data={posts} // Use the posts data from the API
-        renderItem={renderItem} // Function to render each item
-        keyExtractor={(item) => item.id} // Unique key for each item
-        contentContainerStyle={styles.content} // Style for the FlatList's content container
+        data={posts}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.content}
+        ListHeaderComponent={<StorySection />}
       />
     </>
   );
