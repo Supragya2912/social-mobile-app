@@ -8,6 +8,7 @@ import PostScreen from '../screens/PostScreen';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { RouteProp } from '@react-navigation/native';
 import ProfileScreen from '../screens/ProfileScreen';
+import { BlurView } from '@react-native-community/blur';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,10 +54,26 @@ const BottomNavigator = () => {
                 tabBarIcon: ({ color, focused, size }) =>
                     getTabBarIcon({ routeName: route.name, focused, size, color }),
                 tabBarActiveTintColor: 'black',
-                tabBarInactiveTintColor: 'gray',
+                tabBarInactiveTintColor: 'black',
+                tabBarShowLabel: false,
                 tabBarStyle: {
-                    display: 'flex',
+                    height: 60,
+                    backgroundColor: 'transparent',
+                    borderTopWidth: 0,
+                    elevation: 0,
+                    borderRadius: 50,
+                    overflow: 'hidden',
+                    borderTopColor: 'transparent',
                 },
+                tabBarBackground: () => (
+                    <BlurView overlayColor="transparent" blurAmount={25} style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                    }}/>
+                )
             })}
         >
             <Tab.Screen

@@ -56,22 +56,22 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#E9ECF3',
     justifyContent: 'center',
     alignItems: 'center',
   },
   tab: {
-    backgroundColor: 'black',
+    backgroundColor: '#E9ECF3',
     padding: 10,
   },
   tabText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'gray',
+    fontFamily:'sans-serif',
+    color: 'black',
   },
   content: {
-    padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: '#E9ECF3',
   },
 });
 

@@ -16,7 +16,6 @@ const App = () => {
           animation: 'slide_from_right',
         }}>
         <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
-        {/* You can add other stack screens here if needed, but don't include HomeScreen */}
       </Stack.Navigator>
     </NavigationContainer>
   );

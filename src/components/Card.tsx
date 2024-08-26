@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { formatDateLong} from '../helpers/helper';
 
 interface CardProps {
   name: string;
@@ -13,7 +14,7 @@ interface CardProps {
   id: string;
 }
 
-const Card = ({name, avatar, post, likes, caption}: CardProps) => {
+const Card = ({name, avatar, post, likes, caption, createdAt}: CardProps) => {
   console.log('from card component', avatar);
   return (
     <View style={styles.container}>
@@ -25,8 +26,10 @@ const Card = ({name, avatar, post, likes, caption}: CardProps) => {
         </TouchableOpacity>
       </View>
 
-      {/* Post Image */}
-      <Image source={{uri: post}} style={styles.postImage} />
+      {/* Post Image with shadow container */}
+      <View style={styles.postImageContainer}>
+        <Image source={{uri: post}} style={styles.postImage} />
+      </View>
 
       {/* Action Buttons */}
       <View style={styles.actions}>
@@ -64,23 +67,22 @@ const Card = ({name, avatar, post, likes, caption}: CardProps) => {
 
       {/* Caption */}
       <View style={styles.caption}>
-        <Text style={styles.username}>{name} </Text>
-        <Text style={styles.captionText}>
-         {caption}
-        </Text>
+        <Text style={styles.username}>{name}</Text>
+        <Text style={styles.captionText}>{caption}</Text>
       </View>
 
       {/* Time */}
-      <Text style={styles.time}>2 hours ago</Text>
+      <Text style={styles.time}>{formatDateLong(createdAt)}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'gray',
+    backgroundColor: 'white',
     padding: 20,
     marginBottom: 20,
+    width: '100%',
     borderRadius: 10,
   },
   profileSection: {
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     marginRight: 10,
+    backgroundColor: '#ddd',
   },
   username: {
     fontWeight: 'bold',
@@ -101,10 +104,21 @@ const styles = StyleSheet.create({
   moreOptions: {
     padding: 5,
   },
+  postImageContainer: {
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginBottom: 10,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 12,
+  },
   postImage: {
     width: '100%',
     height: 300,
     borderRadius: 10,
+    backgroundColor: '#fff',
   },
   actions: {
     flexDirection: 'row',
@@ -121,9 +135,11 @@ const styles = StyleSheet.create({
   },
   caption: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   captionText: {
     flex: 1,
+    marginLeft: 2,
   },
   time: {
     color: 'gray',
