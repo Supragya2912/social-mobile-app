@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image,  TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HighLightSection from '../components/HighlightsSection';
+import ProfilePostSection from '../components/ProfilePostSection';
 
 const ProfileScreen = () => {
   return (
@@ -43,6 +44,9 @@ const ProfileScreen = () => {
         </TouchableOpacity>
       </View>
       <HighLightSection />
+      <View style={styles.postUser}>
+        <ProfilePostSection />
+      </View>
     </View>
   );
 };
@@ -124,11 +128,15 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-  name:{
+  name: {
     fontWeight: 'bold',
     fontSize: 15,
     marginBottom: 5,
-  }
+  },
+  postUser: {
+    flex: 1,
+    backgroundColor: '#E9ECF3',
+  },
 });
 
 export default ProfileScreen;

@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import useGetPosts from '../hooks/useGetPosts';
 import StorySection from '../components/StorySection';
+import { FlashList } from '@shopify/flash-list';
 
 const HomeScreen = () => {
+
   const { posts, loading, error } = useGetPosts();
 
-
-  // Show a loading spinner or text while loading
   if (loading) {
     return (
       <View style={styles.container}>
@@ -44,9 +44,10 @@ const HomeScreen = () => {
       <View style={styles.tab}>
         <Text style={styles.tabText}>SocialApp</Text>
       </View>
-      <FlatList
+      <FlashList
         data={posts}
         renderItem={renderItem}
+        estimatedItemSize={100}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.content}
         ListHeaderComponent={<StorySection />}

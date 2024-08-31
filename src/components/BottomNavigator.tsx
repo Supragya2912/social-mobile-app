@@ -63,9 +63,7 @@ const BottomNavigator = () => {
                     overflow: 'hidden',
                     borderTopColor: 'transparent',
                 },
-          
             })}
-            
         >
             <Tab.Screen
 
